@@ -1,24 +1,48 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {currentEvent: '---'}
+    this.update = this.update.bind(this)
+  }
+  update(e){
+    this.setState({currentEvent: e.type})
+  }
   render () {
-    return <Title text="asdasd"/>
+    return (
+      <div>
+        <textarea cols="30" rows="5"
+        onKeyPress={this.update}
+        onCopy={this.update}
+        onCut={this.update}
+        onPaste={this.update}
+        onFocus={this.update}
+        onBlur={this.update}
+        onDoubleClick={this.update}
+        />
+        <h1>{this.state.currentEvent}</h1>
+      </div>
+    )
   }
 }
 
-const Title = (props) => <h1>Title: {props.text} </h1>
 
-Title.propTypes = {
-  text(props, propName, component){
-    if(!(propName in props)){
-      return new Error('missing ${propName}')
-    }
-    if(props[propName].length < 8){
-      return new Error('${propName} was too short')
-    }
-  }
-}
+
+
+//
+// const Title = (props) => <h1>Title: {props.text} </h1>
+//
+// Title.propTypes = {
+//   text(props, propName, component){
+//     if(!(propName in props)){
+//       return new Error('missing ${propName}')
+//     }
+//     if(props[propName].length < 8){
+//       return new Error('${propName} was too short')
+//     }
+//   }
+// }
 
 
 
