@@ -1,26 +1,20 @@
 import React from 'react';
-import {Router, Route, browserHistory, Link } from 'react-router';
 
-const Home = () => <div><h1>Home</h1><Links /></div>;
-const About = () => <div><h1>About</h1><Links /></div>;
-const Contact = () => <div><h1>Contact</h1><Links /></div>;
-const Links = () =>
-<nav>
- <Link to="/">Home</Link>
- <Link to="/about">About</Link>
- <Link to="/contact">Contact</Link>
-</nav>
+// class App extends React.Component {
+//   render (){
+//     return <h1>Hello World </h1>
+//   }
+// }
 
-class App extends React.Component {
-  render() {
-    return(
-      <Router history={ browserHistory }>
-       <Route path="/" component={Home}></Route>
-       <Route path="/about" component={About}></Route>
-       <Route path="/contact" component={Contact}></Route>
-      </Router>
-    )
-  }
-}
+// class TestApp extends React.Component {
+//   render () {
+//     // createElement(html tag, props, another element/string)
+//     return React.createElement('h1', null, 'Hello')
+//   }
+// }
+
+
+// stateless Component (cant have state/ classes can have state)
+const App = () => <h1> Hello stateless Component </h1>
 
 export default App;
