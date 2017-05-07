@@ -1,10 +1,11 @@
 import React from 'react';
 
-// class App extends React.Component {
-//   render (){
-//     return <h1>Hello World </h1>
-//   }
-// }
+class App extends React.Component {
+  render (){
+    let txt = this.props.txt;
+    return <h1>{txt}</h1>
+  }
+}
 
 // class TestApp extends React.Component {
 //   render () {
@@ -15,6 +16,6 @@ import React from 'react';
 
 
 // stateless Component (cant have state/ classes can have state)
-const App = () => <h1> Hello stateless Component </h1>
+//const App = () => <h1> Hello stateless Component </h1>
 
 export default App;
