@@ -16,12 +16,16 @@ class App extends React.Component {
       <div>
         <input type="text" onChange={this.update.bind(this)} />
         <h1>{this.state.txt}</h1>
+        <Widget update={this.update.bind(this)} />
+        <Widget update={this.update.bind(this)} />
+        <Widget update={this.update.bind(this)} />
       </div>
     )
   }
 }
 
-
+const Widget = (props) =>
+ <input type="text" onChange={props.update} />
 
 
 //
