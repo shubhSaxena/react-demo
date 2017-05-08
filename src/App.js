@@ -1,30 +1,68 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 class App extends React.Component {
   render() {
     return (
-      <Parent>
-        <div className="childA"></div>
-        <div className="childB"></div>
-      </Parent>
+      <Buttons>
+        <button value="A">A</button>
+        <button value="B">B</button>
+        <button value="C">C</button>
+      </Buttons>
     )
   }
 }
 
-class Parent extends React.Component {
-  render() {
-    // console.log(this.props.children);
-    // let items = React.Children.map(this.props.children, child => child)
-    let items = React.Children.forEach(this.props.children, child => console.log(child.props.className))
-    // let items = React.Children.toArray(this.props.children)
-    console.log(items);
+class Buttons extends React.Component {
+  constructor (){
+    super();
+    this.state = {selected: 'None'}
+  }
+  selectItem (selected){
+    this.setState({selected})
+  }
+  render () {
+    let fn = child =>
+      React.cloneElement(child, {
+        onClick: this.selectItem.bind(this, child.props.value)
+      })
+    let items = React.Children.map(this.props.children, fn);
     return (
-        null
+      <div>
+        <h2>You have selected: {this.state.selected}</h2>
+        {items}
+      </div>
     )
   }
 }
+
+
+
+
+
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <Parent>
+//         <div className="childA"></div>
+//         <div className="childB"></div>
+//       </Parent>
+//     )
+//   }
+// }
+//
+// class Parent extends React.Component {
+//   render() {
+//     // console.log(this.props.children);
+//     // let items = React.Children.map(this.props.children, child => child)
+//     let items = React.Children.forEach(this.props.children, child => console.log(child.props.className))
+//     // let items = React.Children.toArray(this.props.children)
+//     console.log(items);
+//     return (
+//         null
+//     )
+//   }
+// }
 
 // const HOC = (InnerComponent) =>  class extends React.Component {
 //   constructor (){
